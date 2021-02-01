@@ -51,6 +51,7 @@ namespace FunctionMonkey.Model
         public IReadOnlyCollection<HttpParameter> RouteParameters { get; set; }
 
         public string OpenApiDescription { get; set; }
+        public string OpenApiOperationId { get; set; }
 
         public string OpenApiSummary { get; set; }
 

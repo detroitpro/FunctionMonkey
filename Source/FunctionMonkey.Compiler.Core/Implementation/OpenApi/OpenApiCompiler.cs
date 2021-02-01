@@ -40,7 +40,7 @@ namespace FunctionMonkey.Compiler.Core.Implementation.OpenApi
             {
                 return null;
             }
-            
+
             string apiPrefix = GetApiPrefix(outputBinaryFolder);
 
             if (!configuration.IsValid)
@@ -233,16 +233,14 @@ namespace FunctionMonkey.Compiler.Core.Implementation.OpenApi
                 foreach (HttpFunctionDefinition functionByRoute in route)
                 {
                     Type commandType = functionByRoute.CommandType;
-                    
                     foreach (HttpMethod method in functionByRoute.Verbs)
                     {
-                        var operationId =  $"{functionByRoute.Route}{method.Method.ToUpper()}";
                         OpenApiOperation operation = new OpenApiOperation
                         {
                             Description = functionByRoute.OpenApiDescription,
                             Summary = functionByRoute.OpenApiSummary,
                             Responses = new OpenApiResponses(),
-                            OperationId = operationId,
+                            OperationId = functionByRoute.OpenApiOperationId,
                             Tags = string.IsNullOrWhiteSpace(functionByRoute.RouteConfiguration.OpenApiName) ? null : new List<OpenApiTag>() { new OpenApiTag { Name = functionByRoute.RouteConfiguration.OpenApiName } }
                         };
 

@@ -66,6 +66,12 @@ namespace FunctionMonkey.Builders
             return this;
         }
 
+        public IHttpFunctionConfigurationBuilder<TCommandOuter> OpenApiOperationId(string operationId)
+        {
+            _definition.OpenApiOperationId = operationId;
+            return this;
+        }
+
         public IHttpFunctionConfigurationBuilder<TCommandOuter> OpenApiSummary(string summary)
         {
             _definition.OpenApiSummary = summary;
@@ -89,7 +95,7 @@ namespace FunctionMonkey.Builders
             options(builder);
             return this;
         }
-        
+
         public IOutputBindingBuilder<IHttpFunctionConfigurationBuilder<TCommandOuter>> OutputTo =>
             new OutputBindingBuilder<IHttpFunctionConfigurationBuilder<TCommandOuter>>(_connectionStringSettingNames, this, _definition, _pendingOutputConverterType);
 
